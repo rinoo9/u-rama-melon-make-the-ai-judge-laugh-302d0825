@@ -10,6 +10,11 @@ import os
 
 JOKE = "My boss said we're a family here, so I asked for a raise and got grounded."
 
+# The gate: /output/entry.txt must be UTF-8 text of 1 to 200 characters,
+# a single line, not only whitespace. Fail loudly instead of shipping
+# a line the gate would refuse.
+assert "\n" not in JOKE and 1 <= len(JOKE) <= 200 and JOKE.strip(), "joke breaks the gate"
+
 
 def main() -> None:
     os.makedirs("/output", exist_ok=True)
