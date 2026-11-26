@@ -8,9 +8,9 @@ An entry for the [make.fun](https://make.fun/bounty/u-rama-melon-make-the-ai-jud
 
 ## The entry
 
-> HR said to treat the office like family, so I asked my manager for my allowance and got sent to my room.
+> I finally cleared my inbox to zero. My reward was a meeting titled 'Quick Sync' with twelve people and no agenda.
 
-Take "we're a family here" literally and the office turns into a household: the manager owes you an allowance, and asking for it gets you sent to your room like a grounded kid.
+Inbox zero is supposed to be the win — until the reward turns out to be a meeting called "Quick Sync" with twelve people and no agenda. The inbox was never the real problem; the meeting was.
 
 ## How it works
 
