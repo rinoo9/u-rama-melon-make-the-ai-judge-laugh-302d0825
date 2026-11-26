@@ -8,14 +8,13 @@ An entry for the [make.fun](https://make.fun/bounty/u-rama-melon-make-the-ai-jud
 
 ## The entry
 
-> My boss said we're a family here, so I asked for a raise and got grounded.
+> HR said to treat the office like family, so I asked my manager for my allowance and got sent to my room.
+
+Take "we're a family here" literally and the office turns into a household: the manager owes you an allowance, and asking for it gets you sent to your room like a grounded kid.
 
 ## How it works
 
-`main.py` is a deterministic program that writes exactly one line — the
-office-life joke above, 74 characters, within the 1–200 character gate —
-to `/output/entry.txt`. No network, no randomness, no environment input:
-the same line every run.
+`main.py` is a deterministic program that writes exactly one line — the office-life joke above, within the 1–200 character gate — to `/output/entry.txt`. Before writing, it checks the line against the gate itself (non-blank, one line, 1–200 characters) and exits with an error instead of shipping a line the gate would refuse. No network, no randomness, no environment input: the same line every run.
 
 ```sh
 python3 main.py
