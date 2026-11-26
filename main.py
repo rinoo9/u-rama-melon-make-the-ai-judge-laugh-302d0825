@@ -4,9 +4,10 @@
 Writes one joke about office life to /output/entry.txt: a single line
 of 1 to 200 characters, nothing else.
 
-The joke takes the "we're a family here" line literally. If the office
-really is a family, then the manager owes the employee an allowance —
-and the reward for asking is being sent to their room like a child.
+The joke takes the inbox-zero dream literally. Clearing every email is
+supposed to be the win — but the reward is a meeting called "Quick Sync"
+with twelve people and no agenda at all. The punchline is the meeting
+itself: the inbox was never the real problem.
 
 The joke is a fixed constant. No input, no randomness, no clock, no
 network: the program writes byte-identical output on every run.
@@ -16,8 +17,8 @@ import os
 import sys
 
 PUNCHLINE = (
-    "HR said to treat the office like family, so I asked my manager "
-    "for my allowance and got sent to my room."
+    "I finally cleared my inbox to zero. My reward was a meeting "
+    "titled 'Quick Sync' with twelve people and no agenda."
 )
 GATE_MIN = 1
 GATE_MAX = 200
