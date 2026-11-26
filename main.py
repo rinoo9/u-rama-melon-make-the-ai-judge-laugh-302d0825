@@ -1,25 +1,52 @@
 #!/usr/bin/env python3
 """Make the AI Judge Laugh — make.fun bounty entry.
 
-Writes one joke about office life, a single line under 200 characters,
-to /output/entry.txt. Fully deterministic: no randomness, no network,
-no environment input — the same line every run.
+Writes one joke about office life to /output/entry.txt: a single line
+of 1 to 200 characters, nothing else.
+
+The joke takes the "we're a family here" line literally. If the office
+really is a family, then the manager owes the employee an allowance —
+and the reward for asking is being sent to their room like a child.
+
+The joke is a fixed constant. No input, no randomness, no clock, no
+network: the program writes byte-identical output on every run.
 """
 
 import os
+import sys
 
-JOKE = "My boss said we're a family here, so I asked for a raise and got grounded."
+PUNCHLINE = (
+    "HR said to treat the office like family, so I asked my manager "
+    "for my allowance and got sent to my room."
+)
+GATE_MIN = 1
+GATE_MAX = 200
+OUTPUT_FILE = "/output/entry.txt"
 
-# The gate: /output/entry.txt must be UTF-8 text of 1 to 200 characters,
-# a single line, not only whitespace. Fail loudly instead of shipping
-# a line the gate would refuse.
-assert "\n" not in JOKE and 1 <= len(JOKE) <= 200 and JOKE.strip(), "joke breaks the gate"
+
+def check_gate(line):
+    """List every way the line breaks the bounty gate; empty means pass."""
+    faults = []
+    if not line.strip():
+        faults.append("entry is only whitespace")
+    if len(line) < GATE_MIN or len(line) > GATE_MAX:
+        faults.append(
+            f"entry is {len(line)} chars, gate is {GATE_MIN}-{GATE_MAX}"
+        )
+    if "\n" in line or "\r" in line:
+        faults.append("entry must be a single line")
+    return faults
 
 
-def main() -> None:
-    os.makedirs("/output", exist_ok=True)
-    with open("/output/entry.txt", "w", encoding="utf-8") as f:
-        f.write(JOKE + "\n")
+def main():
+    faults = check_gate(PUNCHLINE)
+    if faults:
+        for fault in faults:
+            print(f"gate failed: {fault}", file=sys.stderr)
+        raise SystemExit(1)
+    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+    with open(OUTPUT_FILE, "w", encoding="utf-8", newline="\n") as target:
+        target.write(PUNCHLINE + "\n")
 
 
 if __name__ == "__main__":
